@@ -1,0 +1,9 @@
+#include <mega32.h>
+
+void main(void){
+  DDRC = 0xFF;
+
+while(1){
+    PORTC = 0x6F;
+}
+}
