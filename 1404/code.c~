@@ -1,0 +1,29 @@
+#include <mega32.h>
+#include <delay.h>
+
+void main(void) {
+    DDRC = 0xFF;  // ÅÊ—  C: »—«Ì ”ê„‰ ùÂ«
+    DDRD = 0xFF;  // ÅÊ—  D: »—«Ì «‰ Œ«» —ﬁ„ùÂ«
+
+    while (1) {
+        // —ﬁ„ 4 (”„  çÅ) ? 1
+        PORTD = 0b1110;     // ›⁄«· ò—œ‰ —ﬁ„ 4
+        PORTC = 0x06;       // ‰„«Ì‘ 1
+        delay_ms(5);
+
+        // —ﬁ„ 3 ? 4
+        PORTD = 0b1101;     
+        PORTC = 0x66;       // ‰„«Ì‘ 4
+        delay_ms(5);
+
+        // —ﬁ„ 2 ? 0
+        PORTD = 0b1011;     
+        PORTC = 0x3F;       // ‰„«Ì‘ 0
+        delay_ms(5);
+
+        // —ﬁ„ 1 (”„  —«” ) ? 4
+        PORTD = 0b0111;     
+        PORTC = 0x66;       // ‰„«Ì‘ 4
+        delay_ms(5);
+    }
+}
