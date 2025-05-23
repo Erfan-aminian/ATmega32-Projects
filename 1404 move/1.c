@@ -1,0 +1,59 @@
+#include <mega32.h>
+#include <delay.h>
+
+char seg[10] = {0xFF, 0xFF, 0xFF, 0xFE, 0xFD, 0xFB, 0xF7, 0xFE, 0xFF, 0xEF};
+int i = 0;
+
+void main(void)
+{
+    DDRC = 0xFF;
+    DDRD = 0xFF;
+
+    while (1)
+    {
+        for (i = 3; i <= 6; i++)
+        {
+            PORTD = seg[i];
+            PORTC = 0b00000110;
+            delay_ms(50);
+
+            PORTD = seg[i + 1];
+            PORTC = 0b01100110;
+            delay_ms(50);
+
+            PORTD = seg[i + 2];
+            PORTC = 0b00111111;
+            delay_ms(50);
+
+            PORTD = seg[i + 3];
+            PORTC = 0b01001111;
+            delay_ms(50);
+
+            PORTC = 0x00;
+            delay_ms(400);
+        }
+
+        i = 0;
+        for (i = 0; i < 3; i++)
+        {
+            PORTD = seg[i];
+            PORTC = 0b00000110;
+            delay_ms(50);
+
+            PORTD = seg[i + 1];
+            PORTC = 0b01100110;
+            delay_ms(50);
+
+            PORTD = seg[i + 2];
+            PORTC = 0b00111111;
+            delay_ms(50);
+
+            PORTD = seg[i + 3];
+            PORTC = 0b01001111;
+            delay_ms(50);
+
+            PORTC = 0x00;
+            delay_ms(400);
+        }
+    }
+}
